@@ -1,0 +1,120 @@
+\documentclass[a4paper,12pt,twoside]{report}
+
+% Import packages
+\usepackage{acronym}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{listings}
+\usepackage[pdftex]{graphicx}
+\usepackage[hang,small,bf]{caption}
+\usepackage{template/tum}
+\usepackage{setspace}
+\usepackage[german,english]{babel}
+\usepackage{float}
+\usepackage{floatflt}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage[pdftex,bookmarks=true,plainpages=false,pdfpagelabels=true]{hyperref}
+\usepackage{mdwlist}
+\usepackage{enumerate}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\usepackage[capitalize, noabbrev]{cleveref}
+
+% Import additional settings
+\input{resources/settings.tex}
+
+% Insert the template folder to the graphics path, so the faculty logo can always be imported, whether or not the author as specified a graphics path.
+\makeatletter
+	\providecommand*{\Ginput@path}{}
+	\g@addto@macro\Ginput@path{{template/}{./}}
+\makeatother
+
+\begin{document}
+
+	%
+	\setlength{\evensidemargin}{22pt}
+	\setlength{\oddsidemargin}{22pt}
+
+	% Import some metadata about this thesis
+	\include{resources/meta}
+
+	%
+	\hypersetup{pdfborder={0 0 0}, pdfauthor={<author>}, pdftitle={<title english>}}
+	\lstset{showspaces=false, numbers=left, frame=single, basicstyle=\small}
+
+	% Number the introductory pages with letters
+	\pagenumbering{alph}
+
+	% Include a couple of introductory pages
+	\include{template/cover}
+	\include{template/titlepage}
+
+	\newpage
+	\thispagestyle{empty}
+	\mbox{}
+	\include{template/disclaimer}
+
+	\newpage
+	\thispagestyle{empty}
+	\mbox{}
+	\include{resources/acknowledgements}
+
+	% Number the overview pages with roman numbers
+	\pagenumbering{roman}
+
+	% Include the abstract in English and German
+	\selectlanguage{english}
+	\begin{abstract}
+		\input{resources/abstract}
+	\end{abstract}
+	\clearpage
+	
+	\selectlanguage{german}
+	\begin{abstract}
+		\input{resources/abstract_german}
+	\end{abstract}
+	\clearpage
+	\selectlanguage{english}
+
+	% Create a table of contents
+	\tableofcontents
+	\clearpage
+	\clearpage
+
+	% Include the list of acronyms and abbreviations
+	\include{resources/acronyms}
+	\clearpage
+	\clearpage
+	
+	% Include the outline of your thesis
+	\include{resources/outline}
+
+	% Number the content of the thesis in Arabic numbers
+	\pagenumbering{arabic}
+
+	%
+	\fancyhead{}
+	\pagestyle{fancy}
+	\fancyhead[LE]{\slshape \leftmark}
+	\fancyhead[RO]{\slshape \rightmark}
+	\headheight=15pt
+
+	% Include all the chapters
+	\input{resources/chapters}
+
+	% Create lists of figures and tables
+	\clearpage
+	\listoffigures
+	\clearpage
+	\listoftables
+	\clearpage
+
+	% Include the bibliography
+	\bibliography{thesis}
+	\bibliographystyle{alpha}
+
+\end{document}

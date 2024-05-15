@@ -1,0 +1,22 @@
+\chapter{Tips for writing a thesis in TeX}
+
+	\section{using this template}
+		This template tries to achieve a separation of the template itself and the parts that are specific to the thesis. Ideally, the template does not have to be edited.
+
+	The content of the thesis shall be added to the following files and folders:
+	\begin{itemize}
+		\item the \texttt{.tex}-files in the \texttt{chapters}-folder shall contain the description of your scientific work.
+		\item the \texttt{.tex}-files in the \texttt{resources}-folder contain templates and examples, into which metadata, settings and organisational information about the thesis can be entered.
+		\item the \texttt{thesis.bib}-file shall contain a list of the literature, that you cite in your thesis.
+	\end{itemize}
+
+	\section{General tips}
+		Track your work on this thesis with a version control system such as git.
+
+		In your TeX source code, use one line per sentence.
+		This facilitates spotting excessively long sentences.
+		Also, it makes the tracking of changes by the version control system more useful.
+		If you add line breaks after a fixed number of columns instead, a change affects all subsequent lines of the paragraph, even though the actual contend has not been changed.
+
+		It is recommended to create a folder, in which all images, that are included in this document are stored.
+		See the \texttt{resources/settings.tex}-file, on how to add this folder to the default graphics path, so only the filenames have to be entered, when including an image.
